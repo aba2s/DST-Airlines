@@ -1,3 +1,15 @@
-# DST-Airlines
-Avoir des informations sur les vols dans le monde entier et de traquer en temps réel un avion.
-Passer par l’API de Lufthansa pour récupérer des données sur les vols.
+# Projet DST-Airlines
+# Las updated 2022/10/07
+########################
+####  Project TEAM  ####
+########################
+#	Abass
+# Francis 
+# Mohamed
+
+Développement d'une application (API) de suivi des vols d'avions commerciaux en temps réel, à l'aide de l’API de la compagnie aérienne Lufthansa pour récupérer des données sur les vols.
+
+Se référer au document de spécifications de conception logiciel 2022-10-07-DSTA-Technical_Specifications.odt pour de plus amples informations.
+
+
+
