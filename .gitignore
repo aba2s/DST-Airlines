@@ -5,3 +5,4 @@ Pipfile
 departure_flights.json
 airlines.json
 flights.json
+settings.json
