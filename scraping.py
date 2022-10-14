@@ -1,17 +1,31 @@
 import requests
 import json
 import airportsdata
+import os
+
 
 '''
-/!\ Please make sure to get a valid api key to retrieve data from airlabs
+Please make sure to get a valid api key to retrieve data from airlabs
 Complete documentation could be found --> https://airlabs.co/docs/flights
 
 To use this scrip please set up a virutual environement and install
 the requirements.txt file
 '''
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Read api_key from settings.json file.
+settings_filename = os.path.join(BASE_DIR, 'settings.json')
+if os.path.isfile(settings_filename):
+    with open(settings_filename) as settings_file:
+        settings = json.load(settings_file)
+else:
+    settings = dict()
+
+
 params = {
-    "api_key": "you_api_key"
+    "api_key": settings["airlabs_api_key"]["api_key"]
 }
 
 url = "https://airlabs.co/api/v9/"
@@ -28,6 +42,7 @@ end_point = [
 flights_request = requests.get(url + end_point[0], params)
 flights_request = flights_request.json()
 flights = flights_request['response']
+
 with open("flights.json", "w") as fp:
     json.dump(flights, fp)
 
@@ -45,20 +60,30 @@ with open("airlines.json", "w") as file:
 # ------------------------------------------------------------------------- #
 #                 Extracting and loading all airports IATA code             #
 # --------------------------------------------------------------------------#
-# airports = airportsdata.load('IATA')  # key is IATA code
-# This part will be completed in next days
+'''
+We need iata code to retrieve departure/arrival data by airport.
+'''
+airports = airportsdata.load('IATA')  # key is IATA code
+# iata = list(filter(
+#   lambda x: airports[x]['subd'] == 'Ile-de-France', airports))
+# iata = list(map(lambda x: airports[x]['iata'], airports))
 
+# Let's take only 'CDG' and 'ORY' airports for departure data.
+iata = ['CDG', 'ORY']
 # ------------------------------------------------------------------------- #
 #                 Extracting and loading airport's  data                    #
 # --------------------------------------------------------------------------#
+data = []
+for code in iata:
+    params_airport = {
+        "api_key": settings["airlabs_api_key"]["api_key"],
+        "dep_iata": code
+    }
+    departure_flights_request = requests.get(
+        url + end_point[2], params_airport)
+    departure_flights_request = departure_flights_request.json()
+    departure_flights = departure_flights_request["response"]
+    data.append(departure_flights)
 
-params_airport ={
-    "api_key": "you_api_key",
-    "dep_iata": "JFK"
-}
-departure_flights_request = requests.get(url + end_point[2], params_airport)
-departure_flights_request = departure_flights_request.json()
-departure_flights = departure_flights_request["response"]
-
-with open("departure_flights.json", "w") as file:
-    json.dump(departure_flights, file)
+    with open("departure_flights.json", "w") as file:
+        json.dump(data, file)

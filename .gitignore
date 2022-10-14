@@ -1,4 +1,7 @@
 2022-10-07-DSTA-Technical_Specifications.odt
 *.odt
 Pipfile
-*.json
+*md
+departure_flights.json
+airlines.json
+flights.json
