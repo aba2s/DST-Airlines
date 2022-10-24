@@ -27,7 +27,7 @@ opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 
 # Provide your API key in the query string!!!
 params = {
-  'api_key': '9d2955c1-020a-4343-a6d7-c2f04450735b'
+  'api_key': 'YOUR_API_KEY'
 }
 end_point = [
     "flights?",
