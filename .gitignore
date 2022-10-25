@@ -6,3 +6,17 @@ departure_flights.json
 airlines.json
 flights.json
 settings.json
+.DS_Store
+**/__pycache__/
+docs/build/html/.buildinfo
+docs/build/html/doc.html
+docs/build/html/genindex.html
+docs/build/html/modules.html
+docs/build/html/objects.inv
+docs/build/html/py-modindex.html
+docs/build/html/search.html
+docs/build/html/searchindex.js
+docs/build/html/scraping.html
+docs/build/doctrees/
+docs/build/html/_sources/
+docs/build/html/_static/
