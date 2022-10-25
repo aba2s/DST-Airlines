@@ -18,6 +18,7 @@ from bokeh.server.server import Server
 from bokeh.io import curdoc
 import numpy as np
 import folium
+import os
 
 
 # Header
@@ -26,9 +27,22 @@ opener = urllib.request.build_opener()
 opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 
 # Provide your API key in the query string!!!
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Read api_key from settings.json file.
+settings_filename = os.path.join(BASE_DIR, 'settings.json')
+if os.path.isfile(settings_filename):
+    with open(settings_filename) as settings_file:
+        settings = json.load(settings_file)
+else:
+    settings = dict()
+
+
 params = {
-  'api_key': 'xxxxxxxxx-xxxxxxxxxxx-xxxxxxxxxx'
+    "api_key": settings["airlabs_api_key"]["api_key"]
 }
+
 end_point = [
     "flights?",
     "airlines?",
