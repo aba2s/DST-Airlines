@@ -13,12 +13,12 @@ Nous travaillerons avec l'API AirLabs pour récupérer les données de vols dont
 
 AirLabs API
 -----------
-AirLabs recueille des données à partir de milliers de sources, les nettoie, les agrége et les organise en collections complètes qui permettent aux développeurs de créer
+AirLabs recueille des données à partir de milliers de sources, les nettoie, les agrège et les organise en collections complètes qui permettent aux développeurs de créer
 des produits innovants et d'offrir une expérience utilisateur parfaite. L'API AirLabs Data est conçue pour fournir un moyen simple d'obtenir des données de positionnement
 de vol mondial en temps réel, des horaires de vol et un ensemble impressionnant de compagnies aériennes, d'itinéraires, d'aéroports et d'autres informations pertinentes
 liées à l'aviation. Les requêtes à l'API REST sont effectuées à l'aide de requêtes HTTP et les réponses sont fournies dans un format JSON, XML ou CSV léger. La documentation
-de l'API peut être utilisée pour n'importe quel langage de programmation majeur et fournit des directives générales pour l'intération et des explications sur les points de
-terminaison de l'API, les paramètres de requête et les objets de réponse. Pour une prise de main vous pouvez consulter sur le site, `ici <https://airlabs.co/docs//>`_
+de l'API peut être utilisée pour n'importe quel langage de programmation majeur et fournit des directives générales pour l'intégration et des explications sur les points de
+terminaison de l'API, les paramètres de requête et les objets de réponse. Pour une prise de main vous pouvez consulter sur le site, `ici <https://airlabs.co/docs/>`_
 
 .. admonition:: Important
 
