@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  api:
+    container_name: dst-api
+    image: dst-airlines
+    # command: python /DST/manage.py makemigrations 
+    # command: python /DST/manage.py migrate
+    # command: python /DST/manage.py runserver 0.0.0.0:8000
+    command: >
+      sh -c "python manage.py migrate && python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/DST
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    container_name: postgresql
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    # restart: always
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    #  - "POSTGRES_HOST_AUTH_METHOD=trust"
+
+  # mongodb:
+  #  container_name: mongodb
+  #  image: mongo:latest
+  #  hostname: mongo
+  #  ports:
+  #    - 27017:27017"""
+
+volumes:
+  postgres_data:
