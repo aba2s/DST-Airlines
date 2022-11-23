@@ -7,7 +7,7 @@ services:
     # command: python /DST/manage.py migrate
     # command: python /DST/manage.py runserver 0.0.0.0:8000
     command: >
-      sh -c "python manage.py makemigrations && python manage.py migrate &&
+      sh -c "python manage.py makemigrations flights_app && python manage.py migrate flights_app &&
              python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/DST
