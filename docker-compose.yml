@@ -2,12 +2,12 @@ version: "3.9"
 services:
   api:
     container_name: dst-api
-    image: dst-airlines
-    # command: python /DST/manage.py makemigrations 
+    image: aba2s/dst-airlines
+    # command: python /DST/manage.py makemigrations
     # command: python /DST/manage.py migrate
     # command: python /DST/manage.py runserver 0.0.0.0:8000
     command: >
-      sh -c "python manage.py migrate && python manage.py migrate &&
+      sh -c "python manage.py makemigrations && python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/DST

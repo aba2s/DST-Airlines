@@ -88,16 +88,16 @@ def flights_or_airlines(endpoint):
     Flights.objects.bulk_create(list_flights)
 
 
-# Call the function for saving data
-print("Process starting with flights data ...")
-start = time.time()
-flights_or_airlines(end_point[0])
-end = time.time()
-print("Deltatime: ", end-start)
-print("Process finished with fligths data!\n")
-
-
 def index(request):
+
+    # Call the function for saving data
+    print("Process starting with flights data ...")
+    start = time.time()
+    flights_or_airlines(end_point[0])
+    end = time.time()
+    print("Deltatime: ", end-start)
+    print("Process finished with fligths data!\n")
+
     # Retrieve flights from the database
     flights = Flights.objects.all().values()
     flights_df = pd.DataFrame(flights)
